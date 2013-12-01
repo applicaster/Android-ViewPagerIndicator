@@ -1,9 +1,11 @@
 package com.viewpagerindicator;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -35,6 +37,7 @@ class IcsLinearLayout extends LinearLayout {
         super(context);
 
         TypedArray a = context.obtainStyledAttributes(null, LL, themeAttr, 0);
+        
         setDividerDrawable(a.getDrawable(IcsLinearLayout.LL_DIVIDER));
         mDividerPadding = a.getDimensionPixelSize(LL_DIVIDER_PADDING, 0);
         mShowDividers = a.getInteger(LL_SHOW_DIVIDER, SHOW_DIVIDER_NONE);

@@ -17,6 +17,7 @@
 package com.viewpagerindicator;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -73,6 +74,8 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
     private int mSelectedTabIndex;
 
     private OnTabReselectedListener mTabReselectedListener;
+    
+    private int mCustomStyleAttribute = -1;
 
     public TabPageIndicator(Context context) {
         this(context, null);
@@ -81,8 +84,10 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
     public TabPageIndicator(Context context, AttributeSet attrs) {
         super(context, attrs);
         setHorizontalScrollBarEnabled(false);
-
-        mTabLayout = new IcsLinearLayout(context, R.attr.vpiTabPageIndicatorStyle);
+        
+        initCustomStyleAttribute(attrs);
+        
+        mTabLayout = new IcsLinearLayout(context, mCustomStyleAttribute == -1 ? R.attr.vpiDefaultTabPageIndicatorStyle : mCustomStyleAttribute);
         addView(mTabLayout, new ViewGroup.LayoutParams(WRAP_CONTENT, MATCH_PARENT));
     }
 
@@ -116,6 +121,16 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
             setCurrentItem(mSelectedTabIndex);
         }
     }
+    
+    private void initCustomStyleAttribute(AttributeSet attrs) {
+		String style = "style";
+        for (int i = 0; i < attrs.getAttributeCount(); i++){
+        	if (style.equals(attrs.getAttributeName(i))){
+        		mCustomStyleAttribute = attrs.getAttributeResourceValue(i,-1);
+        		break;
+        	}
+        }
+	}
 
     private void animateToTab(final int position) {
         final View tabView = mTabLayout.getChildAt(position);
@@ -262,7 +277,7 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
         private int mIndex;
 
         public TabView(Context context) {
-            super(context, null, R.attr.vpiTabPageIndicatorStyle);
+            super(context, null, mCustomStyleAttribute == -1 ? R.attr.vpiDefaultTabPageIndicatorStyle : mCustomStyleAttribute);
         }
 
         @Override
