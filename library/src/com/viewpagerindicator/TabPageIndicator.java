@@ -16,6 +16,8 @@
  */
 package com.viewpagerindicator;
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v4.view.PagerAdapter;
@@ -28,8 +30,9 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+import com.applicaster.util.OSUtil;
+import com.applicaster.util.TextUtil;
+import com.applicaster.util.TextUtil.TypeFaceStyle;
 
 /**
  * This widget implements the dynamic action bar tab behavior that can change
@@ -52,6 +55,8 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
     }
 
     private Runnable mTabSelector;
+    
+    private TypeFaceStyle mCustomTypeFace;
 
     private final OnClickListener mTabClickListener = new OnClickListener() {
         public void onClick(View view) {
@@ -86,6 +91,12 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
         setHorizontalScrollBarEnabled(false);
         
         initCustomStyleAttribute(attrs);
+        
+        TypedArray styledAttrs = context.obtainStyledAttributes(attrs,new int[]{OSUtil.getAttributeResourceIdentifier("customtypeface")},0,0);
+        if (styledAttrs != null) {
+        	int index = styledAttrs.getInt(0, -1);
+        	mCustomTypeFace = TypeFaceStyle.fromInteger(index);
+        }
         
         mTabLayout = new IcsLinearLayout(context, mCustomStyleAttribute == -1 ? R.attr.vpiDefaultTabPageIndicatorStyle : mCustomStyleAttribute);
         addView(mTabLayout, new ViewGroup.LayoutParams(WRAP_CONTENT, MATCH_PARENT));
@@ -175,6 +186,10 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
             tabView.setCompoundDrawablesWithIntrinsicBounds(iconResId, 0, 0, 0);
         }
 
+        if (mCustomTypeFace != null) {
+        	TextUtil.setTypeFace(getContext(), mCustomTypeFace, tabView);
+        }
+        
         mTabLayout.addView(tabView, new LinearLayout.LayoutParams(0, MATCH_PARENT, 1));
     }
 
