@@ -1,0 +1,35 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 16
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        minSdkVersion 10
+        targetSdkVersion 10
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['src']
+            resources.srcDirs = ['src']
+            res.srcDirs = ['res']
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/MANIFEST.MF'
+    }
+}
+
+dependencies {
+    compile('com.google.android.gms:play-services:6.5.87') {
+        exclude(group: 'android.support', module: 'v4')
+    }
+    compile 'com.android.support:support-v4:21.0.0'
+}
