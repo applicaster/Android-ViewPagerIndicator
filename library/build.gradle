@@ -31,8 +31,6 @@ dependencies {
 
     compile project(":applicaster-android-sdk")
 
-    compile('com.google.android.gms:play-services:6.5.87') {
-        exclude(group: 'android.support', module: 'v4')
-    }
+
     compile 'com.android.support:support-v4:21.0.0'
 }
