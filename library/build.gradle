@@ -31,5 +31,6 @@ android {
 dependencies {
 
     provided  fileTree(dir: 'libs', include: '**/*.jar' )
+    provided  fileTree(dir: 'optlibs', include: '**/*.jar' )
 
 }
