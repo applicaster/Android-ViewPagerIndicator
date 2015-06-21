@@ -68,10 +68,11 @@
     </path>
     <path id="Android Dependencies.libraryclasspath"/>
     <path id="ViewPagerIndicator.classpath">
+        <pathelement location="bin/classes"/>
         <path refid="Android 4.1.2.libraryclasspath"/>
         <path refid="Android Private Libraries.libraryclasspath"/>
         <path refid="Android Dependencies.libraryclasspath"/>
-        <pathelement location="bin/classes"/>
+        <pathelement location="optlibs/applicaster sdk.jar"/>
     </path>
     
     <!-- Set the path for the project -->
