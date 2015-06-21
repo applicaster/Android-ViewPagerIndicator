@@ -1,8 +1,9 @@
 apply plugin: 'com.android.library'
 
+
 android {
     compileSdkVersion 16
-    buildToolsVersion "20.0.0"
+    buildToolsVersion "22.0.0"
 
     defaultConfig {
         minSdkVersion 14
@@ -15,6 +16,7 @@ android {
             java.srcDirs = ['src']
             resources.srcDirs = ['src']
             res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
         }
     }
 
@@ -29,8 +31,7 @@ android {
 
 dependencies {
 
-    compile project(":applicaster-android-sdk")
+    provided  fileTree(dir: 'libs', include: '**/*.jar' )
+    provided  fileTree(dir: 'optlibs', include: '**/*.jar' )
 
-
-    compile 'com.android.support:support-v4:21.0.0'
 }
