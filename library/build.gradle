@@ -22,6 +22,12 @@ android {
         }
     }
 
+    buildTypes {
+        modular {
+            minifyEnabled false
+        }
+    }
+
     packagingOptions {
         exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/LICENSE.txt'
@@ -29,11 +35,16 @@ android {
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/MANIFEST.MF'
     }
+
+    publishNonDefault true
 }
 
 dependencies {
 
+    debugCompile project(":applicaster-android-sdk")
+    releaseCompile project(":applicaster-android-sdk")
+    modularCompile project(path: ':applicaster-android-sdk', configuration: 'modular')
+    
     provided  fileTree(dir: 'libs', include: '**/*.jar' )
-    compile project(":applicaster-android-sdk")
 
 }
