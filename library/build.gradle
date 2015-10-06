@@ -3,12 +3,12 @@ apply plugin: 'com.android.library'
 
 android {
 
-    compileSdkVersion 16
+    compileSdkVersion "Google Inc.:Google APIs:18"
     buildToolsVersion "22.0.1"
 
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 15
         targetSdkVersion 19
     }
 
@@ -26,6 +26,14 @@ android {
         modular {
             minifyEnabled false
         }
+        debug{
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
+        }
     }
 
     packagingOptions {
@@ -41,8 +49,8 @@ android {
 
 dependencies {
 
-    debugCompile project(":applicaster-android-sdk")
-    releaseCompile project(":applicaster-android-sdk")
+    debugCompile project(path: ':applicaster-android-sdk', configuration: 'debug')
+    releaseCompile project(path: ':applicaster-android-sdk', configuration: 'release')
     modularCompile project(path: ':applicaster-android-sdk', configuration: 'modular')
     
     provided  fileTree(dir: 'libs', include: '**/*.jar' )
