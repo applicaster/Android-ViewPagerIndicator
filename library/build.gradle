@@ -1,14 +1,15 @@
 apply plugin: 'com.android.library'
-
+//apply plugin: 'com.jfrog.bintray'
+//apply plugin: 'maven-publish'
 
 android {
 
-    compileSdkVersion "Google Inc.:Google APIs:18"
+    compileSdkVersion 16
     buildToolsVersion "22.0.1"
 
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 14
         targetSdkVersion 19
     }
 
@@ -26,14 +27,6 @@ android {
         modular {
             minifyEnabled false
         }
-        debug{
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt')
-        }
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt')
-        }
     }
 
     packagingOptions {
@@ -49,10 +42,126 @@ android {
 
 dependencies {
 
-    debugCompile project(path: ':applicaster-android-sdk', configuration: 'debug')
-    releaseCompile project(path: ':applicaster-android-sdk', configuration: 'release')
-    modularCompile project(path: ':applicaster-android-sdk', configuration: 'modular')
-    
-    provided  fileTree(dir: 'libs', include: '**/*.jar' )
-
+//    debugCompile project(":applicaster-android-sdk")
+//    releaseCompile project(":applicaster-android-sdk")
+//    modularCompile project(path: ':applicaster-android-sdk', configuration: 'modular')
+    compile ('com.applicaster:applicaster-android-sdk:2.2.9')
 }
+
+//buildscript {
+//    repositories {
+//        jcenter()
+//    }
+//    dependencies {
+//        classpath 'com.android.tools.build:gradle:1.2.3'
+//        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
+//        classpath 'com.github.dcendents:android-maven-plugin:1.2'
+//
+//    }
+//}
+//
+//
+//
+//publishing {
+//    publications {
+//        ViewPagerIndicatorLibraryMavenJava(MavenPublication) {
+//            groupId GROUP
+//            version '1.0.0'
+//            artifactId 'ViewPagerIndicatorLibrary'
+//            artifact "build/outputs/aar/ViewPagerIndicatorLibrary-release.aar"
+//            artifact androidJavadocsJar
+//            artifact androidSourcesJar
+//            pom.withXml {
+//                Node root = asNode()
+//                root.appendNode('name', 'artifactId')
+//                root.appendNode('description', 'Applicaster ViewPagerIndicatorLibrary')
+//                root.appendNode('url', 'https://github.com/applicaster/'+artifactId)
+//
+//                def issues = root.appendNode('issueManagement')
+//                issues.appendNode('system', 'github')
+//                issues.appendNode('url', 'https://github.com/applicaster/'+artifactId+'/issues')
+//
+//                def scm = root.appendNode('scm')
+//                scm.appendNode('url', 'https://github.com/applicaster/'+artifactId+'.git')
+//                scm.appendNode('connection', 'scm:https://github.com/applicaster/'+artifactId+'.git')
+//                scm.appendNode('developerConnection', 'scm:https://github.com/applicaster/'+artifactId+'.git')
+//
+//                def license = root.appendNode('licenses').appendNode('license')
+//                license.appendNode('name', POM_LICENCE_NAME)
+//                license.appendNode('url', POM_LICENCE_URL)
+//                license.appendNode('distribution', POM_LICENCE_DIST)
+//
+//                def developer = root.appendNode('developers').appendNode('developer')
+//                developer.appendNode('id', POM_DEVELOPER_ID)
+//                developer.appendNode('name', POM_DEVELOPER_NAME)
+//                developer.appendNode('email', POM_DEVELOPER_EMAIL)
+//
+//                def dependenciesNode = asNode().appendNode('dependencies')
+//                configurations.compile.allDependencies.each {
+//                    if (!it.name.is('unspecified')) {
+//                        def dependencyNode = dependenciesNode.appendNode('dependency')
+//                        dependencyNode.appendNode('groupId', it.group)
+//                        dependencyNode.appendNode('artifactId', it.name)
+//                        dependencyNode.appendNode('version', it.version)
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//def getBintrayUserProperty() {
+//    return hasProperty('bintrayUser') ? bintrayUser : ""
+//}
+//
+//def getBintrayApiKeyProperty() {
+//    return hasProperty('bintrayApiKey') ? bintrayApiKey : ""
+//}
+//
+//
+//bintray {
+//    user = bintrayUserProperty
+//    key = bintrayApiKeyProperty
+//    publications = ['ViewPagerIndicatorLibraryMavenJava']
+//    publish = true
+//    pkg {
+//        repo = 'maven'
+//        name = 'ViewPagerIndicatorLibrary'
+//        websiteUrl = 'https://github.com/applicaster/'+name
+//        issueTrackerUrl = 'https://github.com/applicaster/'+name+'/issues'
+//        vcsUrl = 'https://github.com/applicaster/'+name+'.git'
+//        licenses = ['Apache-2.0']
+//        labels = ['android']
+//        version{
+//            name = '1.0.0'
+//            vcsTag = '1.0.0'
+//        }
+//    }
+//}
+//
+//
+//task androidJavadocs(type: Javadoc) {
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//    failOnError false
+//}
+//
+//task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+//    classifier = 'javadoc'
+//    from androidJavadocs.destinationDir
+//}
+//
+//task androidSourcesJar(type: Jar) {
+//    classifier = 'sources'
+//    from android.sourceSets.main.java.sourceFiles
+//}
+//
+//task androidJar(type: Jar) {
+//    from 'build/intermediates/classes/release'
+//}
+//
+//artifacts {
+//    archives androidSourcesJar
+//    archives androidJavadocsJar
+//    archives androidJar
+//}
