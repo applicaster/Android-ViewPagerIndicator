@@ -42,31 +42,31 @@ android {
 
 dependencies {
 
-//    debugCompile project(":applicaster-android-sdk")
-//    releaseCompile project(":applicaster-android-sdk")
+//    debugCompile project(path: ':applicaster-android-sdk', configuration: 'debug')
+//    releaseCompile project(path: ':applicaster-android-sdk', configuration: 'release')
 //    modularCompile project(path: ':applicaster-android-sdk', configuration: 'modular')
-    compile ('com.applicaster:applicaster-android-sdk:2.2.9')
+    compile ('com.applicaster:applicaster-android-sdk:2.2.12')
 }
 
-//buildscript {
-//    repositories {
-//        jcenter()
-//    }
-//    dependencies {
-//        classpath 'com.android.tools.build:gradle:1.2.3'
-//        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
-//        classpath 'com.github.dcendents:android-maven-plugin:1.2'
-//
-//    }
-//}
-//
-//
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
+        classpath 'com.github.dcendents:android-maven-plugin:1.2'
+
+    }
+}
+
+
 //
 //publishing {
 //    publications {
 //        ViewPagerIndicatorLibraryMavenJava(MavenPublication) {
 //            groupId GROUP
-//            version '1.0.0'
+//            version '1.0.2'
 //            artifactId 'ViewPagerIndicatorLibrary'
 //            artifact "build/outputs/aar/ViewPagerIndicatorLibrary-release.aar"
 //            artifact androidJavadocsJar
@@ -98,12 +98,12 @@ dependencies {
 //
 //                def dependenciesNode = asNode().appendNode('dependencies')
 //                configurations.compile.allDependencies.each {
-//                    if (!it.name.is('unspecified')) {
-//                        def dependencyNode = dependenciesNode.appendNode('dependency')
-//                        dependencyNode.appendNode('groupId', it.group)
-//                        dependencyNode.appendNode('artifactId', it.name)
-//                        dependencyNode.appendNode('version', it.version)
-//                    }
+////                    if (!it.name.is('unspecified')) {
+////                        def dependencyNode = dependenciesNode.appendNode('dependency')
+////                        dependencyNode.appendNode('groupId', it.group)
+////                        dependencyNode.appendNode('artifactId', it.name)
+////                        dependencyNode.appendNode('version', it.version)
+////                    }
 //                }
 //            }
 //        }
@@ -133,8 +133,8 @@ dependencies {
 //        licenses = ['Apache-2.0']
 //        labels = ['android']
 //        version{
-//            name = '1.0.0'
-//            vcsTag = '1.0.0'
+//            name = '1.0.2'
+//            vcsTag = '1.0.2'
 //        }
 //    }
 //}
