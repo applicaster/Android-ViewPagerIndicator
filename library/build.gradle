@@ -78,7 +78,7 @@ publishing {
             groupId GROUP
             version getVersionName()
             artifactId 'ViewPagerIndicatorLibrary'
-            artifact "build/outputs/aar/workspace-release.aar"
+            artifact "build/outputs/aar/library-release.aar"
             artifact androidJavadocsJar
             artifact androidSourcesJar
             pom.withXml {
