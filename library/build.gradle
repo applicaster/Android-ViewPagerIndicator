@@ -24,19 +24,6 @@ android {
         }
     }
 
-    buildTypes {
-        modular {
-            minifyEnabled false
-        }
-    }
-
-    packagingOptions {
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/ASL2.0'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/MANIFEST.MF'
-    }
     lintOptions {
         abortOnError false
     }
@@ -44,9 +31,6 @@ android {
 
 dependencies {
 
-//    debugCompile project(path: ':applicaster-android-sdk', configuration: 'debug')
-//    releaseCompile project(path: ':applicaster-android-sdk', configuration: 'release')
-//    modularCompile project(path: ':applicaster-android-sdk', configuration: 'modular')
     compile ('com.applicaster:applicaster-android-sdk:2.2.12')
 }
 
@@ -84,9 +68,9 @@ publishing {
     publications {
         ViewPagerIndicatorLibraryMavenJava(MavenPublication) {
             groupId GROUP
-            version '1.0.2'
+            version getVersionName()
             artifactId 'ViewPagerIndicatorLibrary'
-            artifact "build/outputs/aar/ViewPagerIndicatorLibrary-release.aar"
+            artifact "build/outputs/aar/workspace-release.aar"
             artifact androidJavadocsJar
             artifact androidSourcesJar
             pom.withXml {
@@ -151,8 +135,8 @@ bintray {
         licenses = ['Apache-2.0']
         labels = ['android']
         version{
-            name = '1.0.2'
-            vcsTag = '1.0.2'
+            name = getVersionName()
+            vcsTag = getVersionName()
         }
     }
 }
