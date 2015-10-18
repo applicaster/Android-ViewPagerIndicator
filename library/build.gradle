@@ -29,8 +29,16 @@ android {
     }
 }
 
-dependencies {
 
+repositories {
+    jcenter()
+    mavenCentral()
+    maven {
+        url 'https://dl.bintray.com/drorg/maven/'
+    }
+}
+
+dependencies {
     compile ('com.applicaster:applicaster-android-sdk:2.2.12')
 }
 
