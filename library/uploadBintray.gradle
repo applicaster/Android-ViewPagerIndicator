@@ -59,7 +59,7 @@ publishing {
             groupId GROUP
             version getVersionName()
             artifactId ARTIFACT_ID
-            artifact "build/outputs/aar/"+ARTIFACT_ID+"-release.aar"
+            artifact "build/outputs/aar/"+ARTIFACT_FILE_NMAE+"-release.aar"
             artifact androidJavadocsJar
             artifact androidSourcesJar
             pom.withXml {
