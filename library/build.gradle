@@ -21,7 +21,7 @@ android {
             assets.srcDirs = ['assets']
         }
     }
-    
+
     packagingOptions {
         exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/LICENSE.txt'
@@ -32,6 +32,14 @@ android {
 
     lintOptions {
         abortOnError false
+    }
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven {
+        url 'https://dl.bintray.com/drorg/maven/'
     }
 }
 
