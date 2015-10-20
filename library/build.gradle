@@ -21,13 +21,7 @@ android {
             assets.srcDirs = ['assets']
         }
     }
-
-    buildTypes {
-        modular {
-            minifyEnabled false
-        }
-    }
-
+    
     packagingOptions {
         exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/LICENSE.txt'
