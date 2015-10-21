@@ -44,7 +44,7 @@ repositories {
 }
 
 dependencies {
-    compile ('com.applicaster:applicaster-android-sdk:2.2.12')
+    compile ('com.applicaster:applicaster-android-sdk:3.0.0')
 }
 
 buildscript {
