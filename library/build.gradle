@@ -39,7 +39,7 @@ repositories {
     jcenter()
     mavenCentral()
     maven {
-        url 'https://applicaster-ltd.bintray.com/maven'
+        url 'https://dl.bintray.com/applicaster-ltd/maven-public'
     }
 }
 
