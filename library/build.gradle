@@ -163,6 +163,7 @@ bintray {
     pkg {
         repo = 'maven'
         name = ARTIFACT_ID
+        userOrg = 'applicaster-ltd'
         websiteUrl = POM_URL
         issueTrackerUrl = ISSUE_URL
         vcsUrl = POM_SCM_URL
