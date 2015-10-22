@@ -36,15 +36,17 @@ android {
 }
 
 repositories {
-    jcenter()
-    mavenCentral()
     maven {
-        url 'https://dl.bintray.com/applicaster-ltd/maven-public'
+        credentials{
+            username 'applicasterapps'
+            password '078882fe17e5198e329a9b3a3d0d7714e68aa2b0'
+        }
+        url 'https://dl.bintray.com/applicaster-ltd/maven'
     }
 }
 
 dependencies {
-    compile ('com.applicaster:applicaster-android-sdk:3.0.0')
+    compile ('com.applicaster:applicaster-android-sdk:2.3.0')
 }
 
 buildscript {
@@ -53,7 +55,9 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.github.dcendents:android-maven-plugin:1.2'
         classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.+'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
     }
 }
 
