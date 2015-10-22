@@ -36,6 +36,8 @@ android {
 }
 
 repositories {
+    jcenter()
+    mavenCentral()
     maven {
         credentials{
             username 'applicasterapps'
