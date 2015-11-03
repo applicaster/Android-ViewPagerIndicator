@@ -48,7 +48,7 @@ repositories {
 }
 
 dependencies {
-    compile ('com.applicaster:applicaster-android-sdk:2.3.0')
+    provided fileTree(dir: 'optlibs', include: '**/*.jar')
 }
 
 buildscript {
