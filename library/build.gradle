@@ -22,6 +22,19 @@ android {
         }
     }
 
+    buildTypes {
+        modular {
+            minifyEnabled false
+        }
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+        }
+
+    }
+
     packagingOptions {
         exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/LICENSE.txt'
@@ -33,6 +46,8 @@ android {
     lintOptions {
         abortOnError false
     }
+
+    publishNonDefault true
 }
 
 repositories {
@@ -48,7 +63,10 @@ repositories {
 }
 
 dependencies {
+
+    provided fileTree(dir: 'libs', include: '**/*.jar')
     provided fileTree(dir: 'optlibs', include: '**/*.jar')
+
 }
 
 buildscript {
