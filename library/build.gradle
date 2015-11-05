@@ -50,6 +50,18 @@ android {
     publishNonDefault true
 }
 
+repositories {
+    jcenter()
+    mavenCentral()
+    maven {
+        credentials{
+            username 'applicasterapps'
+            password '078882fe17e5198e329a9b3a3d0d7714e68aa2b0'
+        }
+        url 'https://dl.bintray.com/applicaster-ltd/maven'
+    }
+}
+
 dependencies {
     debugCompile project( path:':applicaster-android-sdk', configuration:'debug' )
     modularCompile project( path:':applicaster-android-sdk', configuration:'modular' )
