@@ -23,12 +23,6 @@ android {
     }
 
     buildTypes {
-        modular {
-            minifyEnabled false
-        }
-        debug {
-            minifyEnabled false
-        }
         release {
             minifyEnabled false
         }
@@ -63,9 +57,7 @@ repositories {
 }
 
 dependencies {
-    debugCompile project( path:':applicaster-android-sdk', configuration:'debug' )
-    modularCompile project( path:':applicaster-android-sdk', configuration:'modular' )
-    releaseCompile ('com.applicaster:applicaster-android-sdk:2.5.+')
+    compile ('com.applicaster:applicaster-android-sdk:2.5.+')
 
 
 }
