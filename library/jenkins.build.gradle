@@ -57,9 +57,7 @@ repositories {
 }
 
 dependencies {
-    compile ('com.applicaster:applicaster-android-sdk:2.5.+')
-
-
+    compile ('com.applicaster:applicaster-android-sdk:2.6.0-m')
 }
 
 apply plugin: 'maven-publish'
