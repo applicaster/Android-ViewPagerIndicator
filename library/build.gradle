@@ -65,7 +65,7 @@ repositories {
 dependencies {
     debugCompile project( path:':applicaster-android-sdk', configuration:'debug' )
     modularCompile project( path:':applicaster-android-sdk', configuration:'modular' )
-    releaseCompile ('com.applicaster:applicaster-android-sdk:2.6.0-m4')
+    releaseCompile ('com.applicaster:applicaster-android-sdk:2.6.0')
 }
 
 buildscript {
