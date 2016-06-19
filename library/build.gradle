@@ -3,13 +3,13 @@ apply plugin: 'com.android.library'
 
 android {
 
-    compileSdkVersion 21
-    buildToolsVersion "22.0.1"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
 
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 19
+        targetSdkVersion 23
     }
 
     sourceSets {
@@ -65,9 +65,7 @@ repositories {
 dependencies {
     debugCompile project( path:':applicaster-android-sdk', configuration:'debug' )
     modularCompile project( path:':applicaster-android-sdk', configuration:'modular' )
-    releaseCompile ('com.applicaster:applicaster-android-sdk:2.5.+')
-
-
+    releaseCompile ('com.applicaster:applicaster-android-sdk:2.6.0')
 }
 
 buildscript {
@@ -75,7 +73,17 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
-        classpath 'com.jakewharton.sdkmanager:gradle-plugin:0.12.+'
+        classpath 'com.android.tools.build:gradle:2.1.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
+    }
+}
+
+//SDK Manager
+buildscript {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath 'com.github.JakeWharton:sdk-manager-plugin:1d29782dd6ffa18880c8cbada748fb3dea45e7be'
     }
 }
