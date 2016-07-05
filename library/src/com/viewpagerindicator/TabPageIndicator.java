@@ -179,8 +179,8 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
         if (iconResId != 0) {
             tabView.setCompoundDrawablesWithIntrinsicBounds(iconResId, 0, 0, 0);
         }
-
-        TextUtil.setTextFont(tabView, mAttrs);
+        String fontName = TextUtil.getFontKeyFromAttributes(mAttrs);
+        TextUtil.setTextFont(tabView, fontName);
 
         mTabLayout.addView(tabView, new LinearLayout.LayoutParams(0, MATCH_PARENT, 1));
     }
