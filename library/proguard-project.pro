@@ -12,4 +12,4 @@
 
 
 
--keep class com.viewpagerindicator.* {*;}
+-keep class com.viewpagerindicator.** {*;}
