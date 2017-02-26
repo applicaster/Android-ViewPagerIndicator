@@ -14,6 +14,9 @@ android {
     }
 
     buildTypes {
+        modular {
+            minifyEnabled false
+        }
         debug {
             minifyEnabled false
             proguardFiles 'proguard-project.pro'
@@ -23,6 +26,7 @@ android {
             proguardFiles 'proguard-project.pro'
         }
     }
+    publishNonDefault true
 
     sourceSets {
         main {
@@ -63,19 +67,11 @@ boolean isAPAndroidSDKPresent(){
 dependencies {
 
     if (isAPAndroidSDKPresent()) {
-        debugCompile project( path:':applicaster-android-sdk', configuration:'debug' )
-        releaseCompile ('com.applicaster:applicaster-android-sdk:2.11.1-tv')
-
-
-//        provided fileTree(include: '**/*.jar', dir: 'libs')
-//        provided fileTree(include: '**/*.jar', dir: 'optlibs')
+        debugCompile project(path: ':applicaster-android-sdk', configuration: 'debug')
+        modularCompile project(path: ':applicaster-android-sdk', configuration: 'modular')
+        releaseCompile 'com.applicaster:applicaster-android-sdk:2.11.2-tv'
     } else {
-
-        compile 'com.applicaster:applicaster-android-sdk:2.11.1-tv'
-
-
-//        compile fileTree(dir: 'libs', include: '*.jar')
-
+        compile 'com.applicaster:applicaster-android-sdk:2.11.2-tv'
     }
 }
 
