@@ -14,9 +14,6 @@ android {
     }
 
     buildTypes {
-        modular {
-            minifyEnabled false
-        }
         debug {
             minifyEnabled false
             proguardFiles 'proguard-project.pro'
@@ -59,7 +56,7 @@ dependencies {
     // Check if an open SDK is defined - if not use the closed one.
     def devSDK = findProject(':applicaster-android-sdk')
     if(devSDK != null){
-        debugCompile project(path: ':applicaster-android-sdk', configuration: 'modular')
+        debugCompile project(path: ':applicaster-android-sdk', configuration: 'debug')
     }
     else{
         debugCompile (applicasterSDKPath)
