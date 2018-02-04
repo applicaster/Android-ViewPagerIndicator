@@ -55,21 +55,20 @@ dependencies {
 
     // Check if an open SDK is defined - if not use the closed one.
     def devSDK = findProject(':applicaster-android-sdk')
-    if(devSDK != null){
-        debugCompile project(path: ':applicaster-android-sdk', configuration: 'debug')
+    if (devSDK != null) {
+        implementation project(':applicaster-android-sdk')
+    } else {
+        implementation(applicasterSDKPath)
     }
-    else{
-        debugCompile (applicasterSDKPath)
-    }
-    releaseCompile (applicasterSDKPath)
 }
 
 buildscript {
     repositories {
+        google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:3.0.1'
     }
 }
 
@@ -82,7 +81,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.0.1'
         classpath 'com.github.dcendents:android-maven-plugin:1.2'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
     }
