@@ -35,6 +35,11 @@ android {
             assets.srcDirs = ['assets']
         }
     }
+
+    defaultConfig{
+        missingDimensionStrategy 'platform', 'mobile'
+        missingDimensionStrategy 'vendor', 'google'
+    }
 }
 
 repositories {
