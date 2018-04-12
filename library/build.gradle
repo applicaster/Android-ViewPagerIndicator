@@ -11,6 +11,8 @@ android {
         targetSdkVersion 26
 
         consumerProguardFiles 'proguard-project.pro'
+        missingDimensionStrategy 'platform', 'mobile'
+        missingDimensionStrategy 'vendor', 'google'
     }
 
     buildTypes {
@@ -34,11 +36,6 @@ android {
             aidl.srcDirs = ['src']
             assets.srcDirs = ['assets']
         }
-    }
-
-    defaultConfig{
-        missingDimensionStrategy 'platform', 'mobile'
-        missingDimensionStrategy 'vendor', 'google'
     }
 }
 
