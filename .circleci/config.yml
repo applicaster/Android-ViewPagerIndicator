@@ -16,10 +16,6 @@ jobs:
       - checkout
 
       - run:
-          name: Create Directory
-          command:  mkdir -p $CIRCLE_ARTIFACTS $CIRCLE_TEST_REPORTS
-
-      - run:
           name: Git Submodule Update
           command:  git submodule update --init --recursive
 
