@@ -40,7 +40,7 @@ jobs:
 
       - run:
           name: Download Android Dependencies
-          command: gradle androidDependencies
+          command: gradle androidDependencies -b $HOME/applicaster/Android-ViewPagerIndicator/library/build.gradle
 
       - run:
           name: Remove NDK
