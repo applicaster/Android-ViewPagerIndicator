@@ -28,7 +28,7 @@ jobs:
           command: sudo add-apt-repository -y ppa:cwchien/gradle
 
       - restore_cache:
-          key: gradle-cache-v1-{{ checksum "$HOME/applicaster/Android-ViewPagerIndicator/library/build.gradle" }}
+          key: gradle-cache-v1-{{ checksum "library/build.gradle" }}
 
       - run:
           name: apt-get update
@@ -49,7 +49,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-          key: gradle-cache-v1-{{ checksum "$HOME/applicaster/Android-ViewPagerIndicator/library/build.gradle" }}
+          key: gradle-cache-v1-{{ checksum "library/build.gradle" }}
 
       - run:
           name: Build release package
