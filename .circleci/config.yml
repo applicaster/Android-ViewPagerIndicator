@@ -28,7 +28,7 @@ jobs:
           command: sudo add-apt-repository -y ppa:cwchien/gradle
 
       - restore_cache:
-          key: gradle-cache-v1-{{ checksum "build.gradle" }}
+          key: gradle-cache-v1-{{ checksum "$HOME/applicaster/Android-ViewPagerIndicator/library/build.gradle" }}
 
       - run:
           name: apt-get update
@@ -49,13 +49,13 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
-          key: gradle-cache-v1-{{ checksum "build.gradle" }}
+          key: gradle-cache-v1-{{ checksum "$HOME/applicaster/Android-ViewPagerIndicator/library/build.gradle" }}
 
       - run:
           name: Build release package
           command: |
             if [ $CIRCLE_TAG ]; then
-              gradle assembleRelease bintrayUpload -b $HOME/applicasterAndroid-ViewPagerIndicator/library/build.gradle
+              gradle assembleRelease bintrayUpload -b $HOME/applicaster/Android-ViewPagerIndicator/library/build.gradle
             fi
 
 workflows:
