@@ -1,0 +1,69 @@
+defaults: &defaults
+  working_directory: ~/applicaster/Android-ViewPagerIndicator
+  shell: /bin/bash --login
+
+  docker:
+      - image: circleci/android:api-26-alpha
+        environment:
+          GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx6144M -XX:MaxPermSize=1024m -Xms512m -XX:+HeapDumpOnOutOfMemoryError"'
+
+version: 2
+jobs:
+  prep:
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      - run:
+          name: Git Submodule Update
+          command:  git submodule update --init --recursive
+
+      - run:
+          name: Install apt-get install
+          command: sudo apt-get install software-properties-common
+
+      - run:
+          name: Add PPA for gradle
+          command: sudo add-apt-repository -y ppa:cwchien/gradle
+
+      - restore_cache:
+          key: gradle-cache-v1-{{ checksum "library/build.gradle" }}
+
+      - run:
+          name: apt-get update
+          command: sudo apt-get update
+
+      - run:
+          name: Gradle install
+          command: sudo apt-get install --allow-unauthenticated gradle
+
+      - run:
+          name: Download Android Dependencies
+          command: gradle androidDependencies -b $HOME/applicaster/Android-ViewPagerIndicator/library/build.gradle
+
+      - run:
+          name: Remove NDK
+          command: sudo rm -rf /opt/android/android-ndk-*
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: gradle-cache-v1-{{ checksum "library/build.gradle" }}
+
+      - run:
+          name: Build release package
+          command: |
+            if [ $CIRCLE_TAG ]; then
+              gradle assembleRelease bintrayUpload -b $HOME/applicaster/Android-ViewPagerIndicator/library/build.gradle
+            fi
+
+workflows:
+  version: 2
+  prep-n-deploy:
+    jobs:
+      # Execute job for all branches, and all tags.
+      - prep:
+          filters:
+            tags:
+              only: /.*/
